@@ -73,13 +73,13 @@ findPivot r c matrix
     numRows = length matrix
 
 pivotStep :: Int -> Int -> Int -> (Matrix, [Step]) -> (Matrix, [Step])
-pivotStep r c pivotRow (m, steps) = (m2, scaleStep : swapSteps ++ steps)
+pivotStep r c pivotRow (m, steps) = (m2, scaleSteps ++ swapSteps ++ steps)
   where
-    swapSteps = if pivotRow /= r then [Swap r pivotRow] else []
-    m1        = foldl (flip applyStep) m swapSteps
-    val       = (m1 !! r) !! c
-    scaleStep = Scale (1 / val) r
-    m2        = applyStep scaleStep m1
+    swapSteps  = if pivotRow /= r then [Swap r pivotRow] else []
+    m1         = foldl (flip applyStep) m swapSteps
+    val        = (m1 !! r) !! c
+    scaleSteps = if val == 1 then [] else [Scale (1 / val) r]
+    m2         = foldl (flip applyStep) m1 scaleSteps
 
 findLeadingCol :: [Rational] -> Int -> Maybe Int
 findLeadingCol [] _ = Nothing

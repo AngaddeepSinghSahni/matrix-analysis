@@ -5,6 +5,7 @@
 *.dyn_o
 dist-newstyle/
 .stack-work/
+Main.hs
 
 # Editor / OS
 .vscode/

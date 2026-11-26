@@ -43,7 +43,7 @@ rank [[1,2,3],[2,4,6]]
 ## Roadmap
 
 ### Next up
-- [ ] Skip logging no-op steps (e.g. scaling a row by 1)
+- [x] Skip logging no-op steps (e.g. scaling a row by 1)
 - [ ] `freeColumns`, to explain why columns are dependent
 - [ ] Return a clear error (`Either String`) instead of `Nothing` when there is no inverse or determinant
 - [ ] A single `Report` type bundling every result, ready to turn into JSON
